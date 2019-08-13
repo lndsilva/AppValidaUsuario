@@ -3,6 +3,9 @@ package br.sp.senac.appvalidausuario;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE =
             "br.sp.senac.appvalidausuario.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +75,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_principal, menu);
 
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.mCadastrar:
+                startActivity(new Intent(getApplicationContext(),
+                        Cadastrar_Activity.class));
+
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
